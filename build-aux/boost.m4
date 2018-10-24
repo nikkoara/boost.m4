@@ -1305,6 +1305,26 @@ CPPFLAGS=$boost_thread_save_CPPFLAGS
 
 AU_ALIAS([BOOST_THREADS], [BOOST_THREAD])
 
+# BOOST_TIMER([PREFERRED-RT-OPT])
+# -------------------------------
+# Look for Boost.Timer.  For the documentation of PREFERRED-RT-OPT, see the
+# documentation of BOOST_FIND_LIB above.
+BOOST_DEFUN([Timer],
+[boost_timer_save_LIBS=$LIBS
+boost_timer_save_LDFLAGS=$LDFLAGS
+# Link-time dependency from timer to chrono was added as of 1.48.0.
+if test $boost_major_version -ge 148; then
+  BOOST_CHRONO([$1])
+  m4_pattern_allow([^BOOST_CHRONO_(LIBS|LDFLAGS)$])dnl
+  LIBS="$LIBS $BOOST_CHRONO_LIBS"
+  LDFLAGS="$LDFLAGS $BOOST_CHRONO_LDFLAGS"
+fi
+BOOST_FIND_LIB([timer], [$1],
+                [boost/timer/timer.hpp],
+                [boost::timer::auto_cpu_timer ignore;])
+LIBS=$boost_timer_save_LIBS
+LDFLAGS=$boost_timer_save_LDFLAGS
+])# BOOST_TIMER
 
 # BOOST_TOKENIZER()
 # -----------------

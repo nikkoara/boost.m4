@@ -160,6 +160,7 @@ The following libraries are supported:
   - System
   - Test (aka Unit Test Framework)
   - Thread
+  - Timer
   - Wave
 Thus you can invoke BOOST_GRAPH (for instance) or BOOST_THREAD([mt-d]).
 The optional argument is made of one or more of the following letters:

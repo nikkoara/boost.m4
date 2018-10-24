@@ -301,6 +301,7 @@ AT_CHECK_MACRO([BOOST_REGEX], [lib])
 AT_CHECK_MACRO([BOOST_TEST], [lib])
 AT_CHECK_MACRO([BOOST_TEST (static)], [lib], [BOOST_TEST([s])])
 AT_CHECK_MACRO([BOOST_THREAD], [lib])
+AT_CHECK_MACRO([BOOST_TIMER], [lib])
 AT_CHECK_MACRO([BOOST_WAVE], [lib])
 
 AT_BANNER([Boost header-only libraries])
